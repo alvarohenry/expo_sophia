@@ -90,41 +90,46 @@
     <img src="https://www.ime.usp.br/~gold/new/assets/img/Page-14-Image-38.png">
   </div>
 
-  <!-- EXPLICACIÓN -->
-  <h2>¿Qué hace un ingeniero? 🤔</h2>
+  <h2>¡Atrapa los globos! 🎈</h2>
+<p>Pulsa sobre los globos para ganar puntos</p>
+<p>Puntos: <span id="puntos">0</span></p>
 
-  <button onclick="hablar('Un ingeniero de sistemas hace que las computadoras funcionen y crea juegos, aplicaciones y robots.')">
-    💡 Explicar
-  </button>
+<div id="juego"></div>
 
-  <!-- EJEMPLO INTERACTIVO -->
-  <h2>¡Mira este programa! 🎮</h2>
-  <p>Presiona el botón 👇</p>
+<script>
+let puntos = 0;
+const juego = document.getElementById('juego');
 
-  <p id="contador">0</p>
-  <button onclick="sumar()">Haz clic</button>
+function crearGlobo() {
+  const globo = document.createElement('div');
+  globo.classList.add('globo');
 
-  <!-- QUIZ -->
-  <h2>Mini Quiz 📝</h2>
-  <p>¿Qué hace un ingeniero de sistemas?</p>
+  // Posición aleatoria dentro del área del juego
+  const maxX = juego.clientWidth - 50;
+  const maxY = juego.clientHeight - 70;
+  globo.style.left = Math.random() * maxX + 'px';
+  globo.style.top = Math.random() * maxY + 'px';
 
-  <button class="quiz-button" onclick="verificarRespuesta(false)">
-    Canta canciones 🎵
-  </button>
+  // Al hacer clic, suma puntos y desaparece
+  globo.onclick = function() {
+    puntos++;
+    document.getElementById('puntos').textContent = puntos;
+    juego.removeChild(globo);
+    crearGlobo(); // Aparece otro globo
+  }
 
-  <button class="quiz-button" onclick="verificarRespuesta(true)">
-    Hace juegos y robots 🤖🎮
-  </button>
+  juego.appendChild(globo);
+}
 
-  <button class="quiz-button" onclick="verificarRespuesta(false)">
-    Pinta cuadros 🎨
-  </button>
-
-  <div id="resultado"></div>
-
+// Inicialmente crea 3 globos
+for(let i = 0; i < 3; i++) {
+  crearGlobo();
+}
+</script>
+  
   <!-- DESPEDIDA -->
   <br><br>
-  <button onclick="hablar('Gracias por escucharme. Soy Sophia Valentina y me gusta ser ingeniera de sistemas.')">
+  <button onclick="hablar('Muchas gracias miss Karelym y amiguitos de Sophia Valentina. Que tengan un bonito dia.')">
     👋 Despedida
   </button>
 
