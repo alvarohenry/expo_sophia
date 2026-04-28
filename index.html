@@ -3,104 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingeniero de Sistemas para Niños</title>
+  <title>Presentación Ingeniera de Sistemas</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f0f8ff;
+      background: linear-gradient(to bottom, #caf0f8, #ffffff);
       text-align: center;
-      padding: 30px;
+      padding: 20px;
     }
+
     h1 {
       color: #0077b6;
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 2.3em;
     }
+
+    h2 {
+      color: #023e8a;
+    }
+
     button {
       background-color: #00b4d8;
       color: white;
       border: none;
-      padding: 18px 25px;
+      padding: 15px 20px;
       font-size: 18px;
       margin: 10px;
       border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 4px 0 #0077b6;
+      transition: all 0.2s;
     }
+
     button:hover {
       background-color: #0096c7;
     }
+
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #0077b6;
+    }
+
     img {
-      max-width: 180px;
+      max-width: 150px;
       margin: 10px;
       border-radius: 12px;
     }
+
     .imagenes {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
+
     .quiz-button {
-      width: 150px;
+      width: 180px;
     }
+
     #resultado {
       font-size: 1.5em;
-      color: #0077b6;
       margin-top: 20px;
+      color: #0077b6;
+    }
+
+    #contador {
+      font-size: 2em;
+      margin: 10px;
+      color: #03045e;
     }
   </style>
 </head>
+
 <body>
 
-<h1>¡Hola! Soy un Ingeniero de Sistemas 🤖💻</h1>
+  <h1>¡Hola! Soy Sophia Valentina 👧💻</h1>
+  <h2>Del Colegio La Salle Arequipa 🏫</h2>
+  <h2>¡Soy una Ingeniera de Sistemas! 🤖✨</h2>
 
-<div class="imagenes">
-  <img src="https://i.imgur.com/8Km9tLL.png" alt="Computadora">
-  <img src="https://i.imgur.com/OVt0fCh.png" alt="Robot">
-  <img src="https://i.imgur.com/BGqVg6f.png" alt="Aplicaciones">
-</div>
-
-<h2>Aprendamos con preguntas 🎉</h2>
-
-<div>
-  <button onclick="hablar('Un ingeniero de sistemas ayuda a que las computadoras hagan juegos, apps y robots.')">
-    ¿Qué hace un ingeniero de sistemas?
+  <!-- SALUDO -->
+  <button onclick="hablar('Hola, mi nombre es Sophia Valentina. Estudio en el colegio La Salle Arequipa. Hoy les voy a contar qué hace un ingeniero de sistemas.')">
+    🎤 Saludar
   </button>
-</div>
 
-<h2>Mini Quiz 📝</h2>
-<p>¿Qué hace un ingeniero de sistemas?</p>
+  <!-- IMÁGENES -->
+  <div class="imagenes">
+    <img src="https://i.imgur.com/8Km9tLL.png">
+    <img src="https://i.imgur.com/OVt0fCh.png">
+    <img src="https://i.imgur.com/BGqVg6f.png">
+  </div>
 
-<div>
-  <button class="quiz-button" onclick="verificarRespuesta(false)">Canta canciones 🎵</button>
-  <button class="quiz-button" onclick="verificarRespuesta(true)">Hace que los robots y juegos funcionen 🤖🎮</button>
-  <button class="quiz-button" onclick="verificarRespuesta(false)">Pinta cuadros 🎨</button>
-</div>
+  <!-- EXPLICACIÓN -->
+  <h2>¿Qué hace un ingeniero? 🤔</h2>
 
-<div id="resultado"></div>
+  <button onclick="hablar('Un ingeniero de sistemas hace que las computadoras funcionen y crea juegos, aplicaciones y robots.')">
+    💡 Explicar
+  </button>
 
-<script>
-  // Función para hablar
-  function hablar(texto) {
-    const synth = window.speechSynthesis;
-    const utter = new SpeechSynthesisUtterance(texto);
-    utter.lang = 'es-ES';
-    synth.speak(utter);
-  }
+  <!-- EJEMPLO INTERACTIVO -->
+  <h2>¡Mira este programa! 🎮</h2>
+  <p>Presiona el botón 👇</p>
 
-  // Función para el mini-quiz
-  function verificarRespuesta(correcto) {
-    const resultado = document.getElementById('resultado');
-    if (correcto) {
-      resultado.textContent = "¡Correcto! 🎉👏";
-      hablar("¡Correcto! Un ingeniero de sistemas hace que los robots y juegos funcionen.");
-    } else {
-      resultado.textContent = "¡Intenta otra vez! 🤔";
-      hablar("Intenta otra vez. Un ingeniero de sistemas hace que los robots y juegos funcionen.");
+  <p id="contador">0</p>
+  <button onclick="sumar()">Haz clic</button>
+
+  <!-- QUIZ -->
+  <h2>Mini Quiz 📝</h2>
+  <p>¿Qué hace un ingeniero de sistemas?</p>
+
+  <button class="quiz-button" onclick="verificarRespuesta(false)">
+    Canta canciones 🎵
+  </button>
+
+  <button class="quiz-button" onclick="verificarRespuesta(true)">
+    Hace juegos y robots 🤖🎮
+  </button>
+
+  <button class="quiz-button" onclick="verificarRespuesta(false)">
+    Pinta cuadros 🎨
+  </button>
+
+  <div id="resultado"></div>
+
+  <!-- DESPEDIDA -->
+  <br><br>
+  <button onclick="hablar('Gracias por escucharme. Soy Sophia Valentina y me gusta ser ingeniera de sistemas.')">
+    👋 Despedida
+  </button>
+
+  <script>
+    // Voz
+    function hablar(texto) {
+      const synth = window.speechSynthesis;
+      const utter = new SpeechSynthesisUtterance(texto);
+      utter.lang = 'es-PE';
+      synth.speak(utter);
     }
-  }
-</script>
+
+    // Contador
+    let numero = 0;
+    function sumar() {
+      numero++;
+      document.getElementById("contador").textContent = numero;
+    }
+
+    // Quiz
+    function verificarRespuesta(correcto) {
+      const resultado = document.getElementById('resultado');
+
+      if (correcto) {
+        resultado.textContent = "¡Correcto! 🎉👏";
+        hablar("¡Correcto! Muy bien.");
+
+        const audio = new Audio("https://www.soundjay.com/human/applause-01.mp3");
+        audio.play();
+
+      } else {
+        resultado.textContent = "¡Intenta otra vez! 🤔";
+        hablar("Intenta otra vez.");
+      }
+    }
+  </script>
 
 </body>
 </html>
