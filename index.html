@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingeniero de Sistemas para Niños</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #0077b6;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      padding: 18px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0096c7;
+    }
+    img {
+      max-width: 180px;
+      margin: 10px;
+      border-radius: 12px;
+    }
+    .imagenes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .quiz-button {
+      width: 150px;
+    }
+    #resultado {
+      font-size: 1.5em;
+      color: #0077b6;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>¡Hola! Soy un Ingeniero de Sistemas 🤖💻</h1>
+
+<div class="imagenes">
+  <img src="https://i.imgur.com/8Km9tLL.png" alt="Computadora">
+  <img src="https://i.imgur.com/OVt0fCh.png" alt="Robot">
+  <img src="https://i.imgur.com/BGqVg6f.png" alt="Aplicaciones">
+</div>
+
+<h2>Aprendamos con preguntas 🎉</h2>
+
+<div>
+  <button onclick="hablar('Un ingeniero de sistemas ayuda a que las computadoras hagan juegos, apps y robots.')">
+    ¿Qué hace un ingeniero de sistemas?
+  </button>
+</div>
+
+<h2>Mini Quiz 📝</h2>
+<p>¿Qué hace un ingeniero de sistemas?</p>
+
+<div>
+  <button class="quiz-button" onclick="verificarRespuesta(false)">Canta canciones 🎵</button>
+  <button class="quiz-button" onclick="verificarRespuesta(true)">Hace que los robots y juegos funcionen 🤖🎮</button>
+  <button class="quiz-button" onclick="verificarRespuesta(false)">Pinta cuadros 🎨</button>
+</div>
+
+<div id="resultado"></div>
+
+<script>
+  // Función para hablar
+  function hablar(texto) {
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(texto);
+    utter.lang = 'es-ES';
+    synth.speak(utter);
+  }
+
+  // Función para el mini-quiz
+  function verificarRespuesta(correcto) {
+    const resultado = document.getElementById('resultado');
+    if (correcto) {
+      resultado.textContent = "¡Correcto! 🎉👏";
+      hablar("¡Correcto! Un ingeniero de sistemas hace que los robots y juegos funcionen.");
+    } else {
+      resultado.textContent = "¡Intenta otra vez! 🤔";
+      hablar("Intenta otra vez. Un ingeniero de sistemas hace que los robots y juegos funcionen.");
+    }
+  }
+</script>
+
+</body>
+</html>
