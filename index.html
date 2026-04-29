@@ -102,62 +102,13 @@
   <div class="imagenes">
     <img src="https://www.ime.usp.br/~gold/new/assets/img/Page-14-Image-38.png">
   </div>
-
-  <h2>¡Atrapa los globos! 🎈</h2>
-  <p>Pulsa sobre los globos para ganar puntos</p>
-  <p>Puntos: <span id="puntos">0</span></p>
-
-  <div id="juego"></div>
-
+  
   <!-- DESPEDIDA -->
   <br><br>
   <button onclick="hablar('Muchas gracias miss Karelym y amiguitos de Sophia Valentina. Que tengan un bonito dia.')">
     👋 Despedida
   </button>
 
-  <script>
-    // Función de voz
-    function hablar(texto) {
-      const synth = window.speechSynthesis;
-      const utter = new SpeechSynthesisUtterance(texto);
-      utter.lang = 'es-PE';
-      synth.speak(utter);
-    }
-
-    // Juego de atrapar globos
-    let puntos = 0;
-    const juego = document.getElementById('juego');
-
-    function crearGlobo() {
-      const globo = document.createElement('div');
-      globo.classList.add('globo');
-
-      // Color aleatorio
-      const colores = ['red', 'blue', 'green', 'yellow', 'pink', 'orange', 'purple'];
-      globo.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-
-      // Posición aleatoria dentro del área del juego
-      const maxX = juego.clientWidth - 50;
-      const maxY = juego.clientHeight - 70;
-      globo.style.left = Math.random() * maxX + 'px';
-      globo.style.top = Math.random() * maxY + 'px';
-
-      // Al hacer clic, suma puntos y desaparece
-      globo.onclick = function() {
-        puntos++;
-        document.getElementById('puntos').textContent = puntos;
-        juego.removeChild(globo);
-        crearGlobo(); // Aparece otro globo
-      }
-
-      juego.appendChild(globo);
-    }
-
-    // Inicialmente crea 3 globos
-    for(let i = 0; i < 3; i++) {
-      crearGlobo();
-    }
-  </script>
-
+ 
 </body>
 </html>
