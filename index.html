@@ -61,38 +61,15 @@
       margin: 10px;
       color: #03045e;
     }
-
-    /* Contenedor del juego */
-    #juego {
-      width: 500px;
-      height: 400px;
-      border: 2px solid #000;
-      margin: 20px auto;
-      position: relative;
-      background-color: #cceeff;
-      overflow: hidden;
-    }
-
-    /* Estilo de los globos */
-    .globo {
-      width: 50px;
-      height: 70px;
-      border-radius: 50% 50% 50% 50%;
-      position: absolute;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .globo:hover {
-      transform: scale(1.2);
-    }
   </style>
 </head>
 
 <body>
 
-  <h1>¡Hola! esta página es para Sophia Valentina 👧💻</h1>
-  
+  <h1>¡Hola! Soy Sophia Valentina 👧💻</h1>
+  <h2>Del Colegio La Salle Arequipa 🏫</h2>
+  <h2>¡Soy una Ingeniera de Sistemas! 🤖✨</h2>
+
   <!-- SALUDO -->
   <button onclick="hablar('Hola, mi amiga Sophia Valentina les ha explicado que hace un ingeniero de sistemas.')">
     🎤 Saludar
@@ -102,13 +79,34 @@
   <div class="imagenes">
     <img src="https://www.ime.usp.br/~gold/new/assets/img/Page-14-Image-38.png">
   </div>
-  
+
+  <!-- CONTADOR SIMPLE -->
+  <h2>¡Contemos juntos! 🎉</h2>
+  <p id="contador">0</p>
+  <button onclick="sumar()">Haz clic para contar</button>
+
   <!-- DESPEDIDA -->
   <br><br>
-  <button onclick="hablar('Muchas gracias miss Karelym y amiguitos de Sophia Valentina. Que tengan un bonito dia.')">
+  <button onclick="hablar('Muchas gracias miss Karelym y amiguitos de Sophia Valentina. Que tengan un bonito día.')">
     👋 Despedida
   </button>
 
- 
+  <script>
+    // Voz
+    function hablar(texto) {
+      const synth = window.speechSynthesis;
+      const utter = new SpeechSynthesisUtterance(texto);
+      utter.lang = 'es-PE';
+      synth.speak(utter);
+    }
+
+    // Contador simple
+    let numero = 0;
+    function sumar() {
+      numero++;
+      document.getElementById("contador").textContent = numero;
+    }
+  </script>
+
 </body>
 </html>
